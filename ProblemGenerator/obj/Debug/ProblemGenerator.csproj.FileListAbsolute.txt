@@ -1,0 +1,10 @@
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\bin\Debug\ProblemGenerator.exe.config
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\bin\Debug\ProblemGenerator.exe
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\bin\Debug\ProblemGenerator.pdb
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.Form1.resources
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.Properties.Resources.resources
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.csproj.GenerateResource.Cache
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.exe
+C:\Users\Администратор\source\repos\ProblemGenerator\ProblemGenerator\obj\Debug\ProblemGenerator.pdb
