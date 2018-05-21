@@ -60,11 +60,15 @@
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.module_Eq_string = new System.Windows.Forms.TextBox();
+            this.number_of_module_eq = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.main_panel.SuspendLayout();
             this.output_panel.SuspendLayout();
             this.options_panel.SuspendLayout();
             this.Square_tab.SuspendLayout();
             this.square_page.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -334,13 +338,16 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.number_of_module_eq);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.module_Eq_string);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(205, 374);
             this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "Indef Int";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Text = "Module";
             // 
             // menuStrip1
             // 
@@ -381,6 +388,30 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // module_Eq_string
+            // 
+            this.module_Eq_string.Location = new System.Drawing.Point(8, 6);
+            this.module_Eq_string.Name = "module_Eq_string";
+            this.module_Eq_string.Size = new System.Drawing.Size(191, 20);
+            this.module_Eq_string.TabIndex = 0;
+            // 
+            // number_of_module_eq
+            // 
+            this.number_of_module_eq.Location = new System.Drawing.Point(175, 319);
+            this.number_of_module_eq.Name = "number_of_module_eq";
+            this.number_of_module_eq.Size = new System.Drawing.Size(22, 20);
+            this.number_of_module_eq.TabIndex = 9;
+            this.number_of_module_eq.Text = "10";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 322);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(161, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Number of problems to generate:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +428,8 @@
             this.Square_tab.ResumeLayout(false);
             this.square_page.ResumeLayout(false);
             this.square_page.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -437,6 +470,9 @@
         private System.Windows.Forms.Label sq_A_label;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ToolStripMenuItem teXToolStripMenuItem;
+        private System.Windows.Forms.TextBox number_of_module_eq;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox module_Eq_string;
     }
 }
 
