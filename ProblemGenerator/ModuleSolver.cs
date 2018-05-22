@@ -56,7 +56,7 @@ namespace ProblemGenerator
         }
         private static void invertSigns(ref StringBuilder str, int from, int to)
         {
-            for (int i = from; i < to; ++i)
+            for (int i = from; i < to - 1; ++i)
             {
                 if (str[i] == '+') str[i] = '-';
                 if (str[i] == '-') str[i] = '+';
