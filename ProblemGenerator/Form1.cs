@@ -43,5 +43,11 @@ namespace ProblemGenerator
             About about_form = new About();
             about_form.Show();
         }
+
+        private void mod_generate_button_Click(object sender, EventArgs e)
+        {
+            ModuleSolver.Solve(module_Eq_string.Text);
+            int x = 1;
+        }
     }
 }

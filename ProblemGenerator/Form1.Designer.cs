@@ -55,14 +55,15 @@
             this.sq_B_label = new System.Windows.Forms.Label();
             this.sq_A_label = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.number_of_module_eq = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.module_Eq_string = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.module_Eq_string = new System.Windows.Forms.TextBox();
-            this.number_of_module_eq = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.mod_generate_button = new System.Windows.Forms.Button();
             this.main_panel.SuspendLayout();
             this.output_panel.SuspendLayout();
             this.options_panel.SuspendLayout();
@@ -339,6 +340,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.mod_generate_button);
             this.tabPage1.Controls.Add(this.number_of_module_eq);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.module_Eq_string);
@@ -348,6 +350,30 @@
             this.tabPage1.Size = new System.Drawing.Size(205, 374);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Module";
+            // 
+            // number_of_module_eq
+            // 
+            this.number_of_module_eq.Location = new System.Drawing.Point(175, 44);
+            this.number_of_module_eq.Name = "number_of_module_eq";
+            this.number_of_module_eq.Size = new System.Drawing.Size(22, 20);
+            this.number_of_module_eq.TabIndex = 9;
+            this.number_of_module_eq.Text = "10";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(161, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Number of problems to generate:";
+            // 
+            // module_Eq_string
+            // 
+            this.module_Eq_string.Location = new System.Drawing.Point(8, 6);
+            this.module_Eq_string.Name = "module_Eq_string";
+            this.module_Eq_string.Size = new System.Drawing.Size(191, 20);
+            this.module_Eq_string.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -388,29 +414,16 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // module_Eq_string
+            // mod_generate_button
             // 
-            this.module_Eq_string.Location = new System.Drawing.Point(8, 6);
-            this.module_Eq_string.Name = "module_Eq_string";
-            this.module_Eq_string.Size = new System.Drawing.Size(191, 20);
-            this.module_Eq_string.TabIndex = 0;
-            // 
-            // number_of_module_eq
-            // 
-            this.number_of_module_eq.Location = new System.Drawing.Point(175, 319);
-            this.number_of_module_eq.Name = "number_of_module_eq";
-            this.number_of_module_eq.Size = new System.Drawing.Size(22, 20);
-            this.number_of_module_eq.TabIndex = 9;
-            this.number_of_module_eq.Text = "10";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 322);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(161, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Number of problems to generate:";
+            this.mod_generate_button.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.mod_generate_button.Location = new System.Drawing.Point(3, 348);
+            this.mod_generate_button.Name = "mod_generate_button";
+            this.mod_generate_button.Size = new System.Drawing.Size(199, 23);
+            this.mod_generate_button.TabIndex = 17;
+            this.mod_generate_button.Text = "Generate";
+            this.mod_generate_button.UseVisualStyleBackColor = true;
+            this.mod_generate_button.Click += new System.EventHandler(this.mod_generate_button_Click);
             // 
             // Form1
             // 
@@ -473,6 +486,7 @@
         private System.Windows.Forms.TextBox number_of_module_eq;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox module_Eq_string;
+        private System.Windows.Forms.Button mod_generate_button;
     }
 }
 

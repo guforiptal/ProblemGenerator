@@ -12,17 +12,17 @@ namespace ProblemGenerator
         private static double left_X = 0.0d;
         private static double right_C = 0.0d;
         private static double right_X = 0.0d;*/
-        private static List<float> roots;
+        private static List<float> roots = new List<float>();
 
         public static void Solve(String eq)
         {
-            eq = eq.Trim().ToLower();
+            eq = eq.Replace(" ", "").ToLower();
             StringBuilder[] parts = new StringBuilder[2];
             parts[0] = new StringBuilder(eq.Split('=')[0]);
             parts[1] = new StringBuilder(eq.Split('=')[1]);
             List<int>[] modules = new List<int>[2];
             for (int i = 0; i < 2; ++i)
-            { 
+            {
                 modules[i] = findAllModules(ref parts[i]);
                 if (modules[i].Any())
                 {
@@ -31,35 +31,36 @@ namespace ProblemGenerator
                     //parts[i].remove(modules[i][modules[i].count / 2 - 1], 1);
                     //solve(string.concat(parts[0], "=", parts[1]));
                     // no - before ||
-                    Solve(String.Concat(parts[0], "=", parts[1]));
-                    parts[i].Remove(modules[i][0], 1);
                     parts[i].Remove(modules[i][1], 1);
+                    parts[i].Remove(modules[i][0], 1);
+                    Solve(String.Concat(parts[0], "=", parts[1]));
                     invertSigns(ref parts[i], modules[i][0], modules[i][1]);
+                    Solve(String.Concat(parts[0], "=", parts[1]));
                 }
             }
             countEq(ref parts);
         }
-
-        public static void Solve()
-        {
-
-        }
-
         private static List<int> findAllModules(ref StringBuilder str)
         {
             var foundIndexes = new List<int>();
-            for (int i = str.IndexOf('|'); i > -1; i = str.IndexOf('|', i + 1))
+            int count = 0;
+            for (int i = 0; (i < str.Length) && (count < 2); ++i)
             {
-                foundIndexes.Add(i);
+                if (str[i] == '|')
+                {
+                    foundIndexes.Add(i);
+                    ++count;
+                }
             }
             return foundIndexes;
         }
         private static void invertSigns(ref StringBuilder str, int from, int to)
         {
+            if (str[from] != '-') { str.Insert(from, '+'); ++to; }
             for (int i = from; i < to - 1; ++i)
             {
-                if (str[i] == '+') str[i] = '-';
-                if (str[i] == '-') str[i] = '+';
+                if (str[i] == '+') { str[i] = '-'; continue; };
+                if (str[i] == '-') { str[i] = '+'; continue; };
             }
         }
         private static void countEq(ref StringBuilder[] str)
@@ -76,6 +77,7 @@ namespace ProblemGenerator
         }
         private static void countPartEq(ref StringBuilder str, ref float X, ref float C)
         {
+            if (str[0] != '-') str.Insert(0, '+');
             for (int i = 0; i < str.Length;)
             {
                 if (str[i] == '-') // -
@@ -83,7 +85,7 @@ namespace ProblemGenerator
                     if (str[i + 1] == 'x') { X -= 1.0f; i += 2; }  // -x
                     else
                     {
-                        if (str[i + 2] == 'x') { X -= (float)(str[i + 1] - '0'); i += 3; } // -Nx
+                        if ((i + 2 < str.Length)&&(str[i + 2] == 'x')) { X -= (float)(str[i + 1] - '0'); i += 3; } // -Nx
                         else C -= (float)(str[i + 1] - '0'); i += 2; // -N
                     }
                 }
@@ -92,7 +94,7 @@ namespace ProblemGenerator
                     if (str[i + 1] == 'x') { X += 1.0f; i += 2; }  // +x
                     else
                     {
-                        if (str[i + 2] == 'x') { X += (float)(str[i + 1] - '0'); i += 3; } // +Nx
+                        if ((i + 2 < str.Length) && (str[i + 2] == 'x')) { X += (float)(str[i + 1] - '0'); i += 3; } // +Nx
                         else C += (float)(str[i + 1] - '0'); i += 2; // +N
                     }
                 }
