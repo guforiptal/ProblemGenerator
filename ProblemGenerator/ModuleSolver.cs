@@ -18,8 +18,9 @@ namespace ProblemGenerator
         {
             eq = eq.Replace(" ", "").ToLower();
             StringBuilder[] parts = new StringBuilder[2];
-            parts[0] = new StringBuilder(eq.Split('=')[0]);
-            parts[1] = new StringBuilder(eq.Split('=')[1]);
+            String[] buf = eq.Split('=');
+            parts[0] = new StringBuilder(buf[0]);
+            parts[1] = new StringBuilder(buf[1]);
             List<int>[] modules = new List<int>[2];
             for (int i = 0; i < 2; ++i)
             {
