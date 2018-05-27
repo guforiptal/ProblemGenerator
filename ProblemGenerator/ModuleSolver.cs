@@ -16,7 +16,12 @@ namespace ProblemGenerator
 
         public static void Solve(String eq)
         {
-            eq = eq.Replace(" ", "").ToLower();
+            roots = new List<float>();
+            eq = eq.Replace(" ", "").Replace("∣", "|").Replace("−", "-").ToLower();
+            SolveRecursive(eq);
+        }
+        public static void SolveRecursive(String eq)
+        {
             StringBuilder[] parts = new StringBuilder[2];
             String[] buf = eq.Split('=');
             parts[0] = new StringBuilder(buf[0]);
@@ -34,12 +39,12 @@ namespace ProblemGenerator
                     // no - before ||
                     parts[i].Remove(modules[i][1], 1);
                     parts[i].Remove(modules[i][0], 1);
-                    Solve(String.Concat(parts[0], "=", parts[1]));
+                    SolveRecursive(String.Concat(parts[0], "=", parts[1]));
                     invertSigns(ref parts[i], modules[i][0], modules[i][1]);
-                    Solve(String.Concat(parts[0], "=", parts[1]));
+                    SolveRecursive(String.Concat(parts[0], "=", parts[1]));
                 }
             }
-            countEq(ref parts);
+            if (!(modules[0].Any() && modules[1].Any())) countEq(ref parts);
         }
         private static List<int> findAllModules(ref StringBuilder str)
         {
@@ -57,13 +62,18 @@ namespace ProblemGenerator
         }
         private static void invertSigns(ref StringBuilder str, int from, int to)
         {
-            if (str[from] != '-') { str.Insert(from, '+'); ++to; }
+            if (from > 1)
+            {
+                if (str[from - 1] == '-') { str[from-1] = '+'; return; }
+                if (str[from - 1] == '+') { str.Remove(from - 1, 1);--from;--to; }
+            }
+            if ((str[from] != '-')) { str.Insert(from, '+'); ++to; }
             for (int i = from; i < to - 1; ++i)
             {
                 if (str[i] == '+') { str[i] = '-'; continue; };
                 if (str[i] == '-') { str[i] = '+'; continue; };
             }
-        }
+        }   
         private static void countEq(ref StringBuilder[] str)
         {
             float leftX = 0.0f;
@@ -74,7 +84,8 @@ namespace ProblemGenerator
             countPartEq(ref str[1], ref rightX, ref rightC);
             leftX -= rightX;
             rightC -= leftC;
-            roots.Add(rightC/leftX);
+            if (Math.Abs(leftX) < 0.00000001f) return;
+            if (!roots.Contains(rightC / leftX)) roots.Add(rightC/leftX);
         }
         private static void countPartEq(ref StringBuilder str, ref float X, ref float C)
         {
@@ -86,8 +97,8 @@ namespace ProblemGenerator
                     if (str[i + 1] == 'x') { X -= 1.0f; i += 2; }  // -x
                     else
                     {
-                        if ((i + 2 < str.Length)&&(str[i + 2] == 'x')) { X -= (float)(str[i + 1] - '0'); i += 3; } // -Nx
-                        else C -= (float)(str[i + 1] - '0'); i += 2; // -N
+                        if ((i + 2 < str.Length) && (str[i + 2] == 'x')) { X -= (float)(str[i + 1] - '0'); i += 3; } // -Nx
+                        else { C -= (float)(str[i + 1] - '0'); i += 2; } // -N
                     }
                 }
                 else
@@ -96,10 +107,22 @@ namespace ProblemGenerator
                     else
                     {
                         if ((i + 2 < str.Length) && (str[i + 2] == 'x')) { X += (float)(str[i + 1] - '0'); i += 3; } // +Nx
-                        else C += (float)(str[i + 1] - '0'); i += 2; // +N
+                        else { C += (float)(str[i + 1] - '0'); i += 2; } // +N
                     }
                 }
             }
+        }
+        public static void Output(ref System.Windows.Forms.RichTextBox box)
+        {
+            box.Text = "";
+            int num = 0;
+            foreach (float root in roots)
+            {
+                box.Text += "x" + num + "=" + string.Format("{0:N2}", root);
+                box.Text += Environment.NewLine;
+                ++num;
+            }
+            box.Text += Environment.NewLine;
         }
     }
 }
