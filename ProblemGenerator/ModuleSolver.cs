@@ -12,10 +12,12 @@ namespace ProblemGenerator
         private static double left_X = 0.0d;
         private static double right_C = 0.0d;
         private static double right_X = 0.0d;*/
-        private static List<float> roots = new List<float>();
+        private static List<float> roots;
+        private static String last_eq;
 
         public static void Solve(String eq)
         {
+            last_eq = eq;
             roots = new List<float>();
             eq = eq.Replace(" ", "").Replace("∣", "|").Replace("−", "-").ToLower();
             SolveRecursive(eq);
@@ -85,7 +87,8 @@ namespace ProblemGenerator
             leftX -= rightX;
             rightC -= leftC;
             if (Math.Abs(leftX) < 0.00000001f) return;
-            if (!roots.Contains(rightC / leftX)) roots.Add(rightC/leftX);
+            float root = rightC / leftX;
+            if (!roots.Contains(root)) roots.Add(root);
         }
         private static void countPartEq(ref StringBuilder str, ref float X, ref float C)
         {
@@ -111,6 +114,10 @@ namespace ProblemGenerator
                     }
                 }
             }
+        }
+        private static bool testRoot(float)
+        {
+
         }
         public static void Output(ref System.Windows.Forms.RichTextBox box)
         {
